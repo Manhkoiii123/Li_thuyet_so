@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int MOD = (int)(1e9+7);
+ll gt[21];
+void init(){
+    gt[0]=1;
+    for(int i=1;i<21;i++){
+        gt[i]=gt[i-1]*i;
+    }
+}
+int main(){
+    init();
+    int n,k1,k2,k3,k4;
+    cin>>n>>k1>>k2>>k3>>k4;
+    cout<<gt[n]/(gt[k1]*gt[k2]*gt[k3]*gt[k4])<<endl;
+}
