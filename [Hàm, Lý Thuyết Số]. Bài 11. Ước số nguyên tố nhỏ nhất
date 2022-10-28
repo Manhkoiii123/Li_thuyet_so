@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int pr[100001];
+void init(){
+    for(int i=1;i<100001;i++) pr[i]=i;
+    for(int i=2;i<sqrt(100001);i++){
+        if(pr[i]==i){
+            for(int j=i*i;j<100001;j+=i){
+                if(pr[j]==j){
+                    pr[j]=i;
+                }
+            }
+        }
+    }
+}
+int main(){
+    init();
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        cout<<pr[i]<<endl;
+    }
+}
