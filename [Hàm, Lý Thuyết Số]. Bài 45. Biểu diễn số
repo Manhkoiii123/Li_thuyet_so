@@ -1,0 +1,24 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int n;
+    cin>>n;
+    int r=n%11;
+    int ok=0;
+    for(int i=r;i<=n/111;i+=11){
+        if((n-111*i)%11==0){
+            ok=1;
+            
+        }
+    }
+    if(ok==1){
+        cout<<"YES"<<endl;
+    }
+    else cout<<"NO"<<endl;
+}
