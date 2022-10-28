@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int MOD = (int)(1e9+7);
+
+ll powmod(ll a,ll b,ll m){
+    a%=m;
+    ll res=1;
+    while(b){
+        if(b%2==1){
+            res*=a;
+            res%=m;
+        }
+        a*=a;
+        a%=m;
+        b/=2;
+    }
+    return res;
+}
+ll inverse(ll a, ll m){
+    return powmod(a,m-2,m);
+}
+
+
+int main(){
+    ll a,b,c,m;
+    cin>>a>>b>>c>>m;
+    ll tu = powmod(a,b,m);
+    ll mau = inverse(c,m);
+    ll ans=(tu % m *mau % m)%m;
+    cout<<ans<<endl; 
+}
