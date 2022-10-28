@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int MOD = (int)(1e9+7);
+ll powmod(ll a,ll b){
+    ll res =1 ;
+    a%=MOD;
+    while(b){
+        if(b%2==1){
+            res*=a;
+            res%=MOD;
+        }
+        a*=a;
+        a%=MOD;
+        b/=2;
+    }
+    return res;
+}
+int a[31];
+void init(){
+    a[0]=1;
+    for(int i=1;i<31;i++){
+        a[i]=a[i-1]*2;
+    }
+}
+int main(){
+    init();
+    ll n,k;
+    cin>>n>>k;
+    set<int>se;
+    for(int i=30;i>=0;i--){
+        if(k>=a[i]){
+            se.insert(i);
+            k-=a[i];
+        }
+    }
+    
+    ll ans=0;
+    for(auto it:se){
+        ans += powmod(n,it);
+        ans%=MOD;
+    }
+    cout<<ans<<endl;
+}
