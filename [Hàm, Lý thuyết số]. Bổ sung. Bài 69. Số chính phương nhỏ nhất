@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+const int MOD = (int)(1e9+7);
+
+bool check(ll n){
+    int r=sqrt(n);
+    return 1ll*r*r==n;
+}
+void pt(ll n){
+    vector<ll>v;
+    for(int i=1;i<=sqrt(n);i++){
+        if(n%i==0){
+            v.push_back(i);
+            if(i!=n/i){
+                v.push_back(n/i);
+            }
+        }
+    }
+    sort(v.begin(),v.end());
+    for(auto it:v){
+        
+        if(check(n*it)){
+            cout<<n*it<<endl;
+            system("pause");
+            break;
+        }
+    }
+}
+int main(){
+    ll n;
+    cin>>n;
+    pt(n);
+    system("pause");
+}
