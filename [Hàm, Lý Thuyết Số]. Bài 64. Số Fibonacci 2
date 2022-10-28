@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+ll f[93];
+void init(){
+    f[0]=0;
+    f[1]=1;
+    for(int i=2;i<93;i++){
+        f[i]=f[i-1]+f[i-2];
+    }
+}
+int main(){
+    init();
+    ll n;
+    cin>>n;
+    int ok=0;
+    for(int i=0;i<93;i++){
+        if(n==f[i]){
+            ok=1;
+        }
+    }
+    if(ok){
+        cout<<"YES"<<endl;
+    }
+    else cout<<"NO"<<endl;
+}
