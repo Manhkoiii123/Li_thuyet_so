@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int MOD = (int) (1e9+7);
+
+ll powmod(ll a,ll b, ll m){
+    ll res = 1;
+    a%=m;
+    while(b){
+        if(b%2==1){
+            res*=a;
+            res%=m;
+        }
+        a*=a;
+        a%=m;
+        b/=2;
+    }
+    return res;
+}
+ll inverse(ll a,ll m){
+    return powmod(a,m-2,m);
+}
+ll gt[1000001];
+int main(){
+    ll n,k;
+    cin>>n>>k;
+    gt[0]=1;
+    for(ll i=1;i<=n;i++){
+        gt[i]=gt[i-1]*i;
+        gt[i]%=MOD;
+    }
+    cout<<gt[n]%MOD*inverse(gt[n-k]*gt[k]%MOD,MOD)%MOD<<endl;
+}
