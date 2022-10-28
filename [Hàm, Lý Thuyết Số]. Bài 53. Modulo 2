@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const int MOD = (int)(1e9+7);
+ll x,y,d;
+void check(ll m,ll n){
+    if(n==0){
+        x=1;
+        y=0;
+        d=m;
+    }
+    else {
+        check(n,m%n);
+        int tmp=x;
+        x=y;
+        y=tmp-m/n*y;
+    }
+}
+void inverse(ll a,ll m){
+    check(a,m);
+    if(d!=1){
+        cout<<"-1"<<endl;
+    }
+    else cout<<(x%m+m)%m<<endl;
+}
+int main(){
+    ll a;
+    cin>>a;
+    inverse(a,MOD);
+}
